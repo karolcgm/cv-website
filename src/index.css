@@ -45,9 +45,42 @@ body::before {
   width: 100%;
   height: 100%;
   background: url('/src/assets/grid.svg') repeat;
-  opacity: 0.1;
+  opacity: 0.08;
   z-index: -1;
   pointer-events: none;
+}
+
+/* Container width adjustment */
+.container {
+  max-width: 1140px !important;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* Improved spacing between sections */
+section {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+  margin-bottom: 2rem;
+}
+
+/* Improved spacing between elements */
+.gap-6 {
+  gap: 2.5rem !important;
+}
+
+.gap-8 {
+  gap: 3rem !important;
+}
+
+.mb-12 {
+  margin-bottom: 4rem !important;
+}
+
+.p-6 {
+  padding: 2rem !important;
 }
 
 /* Custom animations */
@@ -175,6 +208,31 @@ body::before {
   border-radius: 12px;
 }
 
+/* Improved contact links */
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--secondary-color);
+}
+
+.contact-link {
+  color: white;
+  opacity: 0.9;
+  text-decoration: none;
+  background: transparent;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+}
+
+.contact-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(5px);
+}
+
 /* Delay utility classes */
 .delay-100 {
   animation-delay: 100ms;
@@ -200,6 +258,16 @@ body::before {
 @media (max-width: 768px) {
   html {
     font-size: 50%;
+  }
+  
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  section {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 }
 

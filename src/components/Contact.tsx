@@ -1,6 +1,15 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { 
+  FaEnvelope, 
+  FaPhone, 
+  FaMapMarkerAlt, 
+  FaPaperPlane, 
+  FaRegUser, 
+  FaRegEnvelope, 
+  FaRegComment, 
+  FaRegFileAlt 
+} from 'react-icons/fa';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -42,19 +51,19 @@ const Contact = () => {
   
   const contactInfo = [
     {
-      icon: <FaEnvelope />,
+      icon: <FaEnvelope className="text-xl" />,
       label: "Email",
       value: "piotr.peszkoo@gmail.com",
       link: "mailto:piotr.peszkoo@gmail.com"
     },
     {
-      icon: <FaPhone />,
+      icon: <FaPhone className="text-xl" />,
       label: "Telefon",
       value: "+48 535 272 451",
       link: "tel:+48535272451"
     },
     {
-      icon: <FaMapMarkerAlt />,
+      icon: <FaMapMarkerAlt className="text-xl" />,
       label: "Lokalizacja",
       value: "Mikołów, Polska",
       link: "https://maps.google.com/?q=Mikołów,Poland"
@@ -83,7 +92,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 relative">
       <motion.div
-        className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8"
+        className="container mx-auto"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
@@ -121,10 +130,12 @@ const Contact = () => {
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 hover:bg-white/5 p-3 rounded-lg transition-all"
+                    className="flex items-start gap-4 hover:bg-white/5 p-3 rounded-lg transition-all contact-link"
                     whileHover={{ x: 5 }}
                   >
-                    <div className="text-xl text-primary mt-1">{info.icon}</div>
+                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                      {info.icon}
+                    </div>
                     <div>
                       <p className="font-medium">{info.label}</p>
                       <p className="text-sm opacity-80">{info.value}</p>
@@ -151,9 +162,12 @@ const Contact = () => {
               onSubmit={handleSubmit}
               className="glassmorphism p-6 rounded-xl"
             >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium mb-1 opacity-80">Imię i nazwisko</label>
+                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
+                    <FaRegUser className="text-primary" />
+                    <span>Imię i nazwisko</span>
+                  </label>
                   <input
                     type="text"
                     id="name"
@@ -161,12 +175,15 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                   />
                 </div>
                 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-1 opacity-80">Email</label>
+                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
+                    <FaRegEnvelope className="text-primary" />
+                    <span>Email</span>
+                  </label>
                   <input
                     type="email"
                     id="email"
@@ -174,13 +191,16 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                   />
                 </div>
               </div>
               
-              <div className="mb-4">
-                <label htmlFor="subject" className="block text-sm font-medium mb-1 opacity-80">Temat</label>
+              <div className="mb-6">
+                <label htmlFor="subject" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
+                  <FaRegFileAlt className="text-primary" />
+                  <span>Temat</span>
+                </label>
                 <input
                   type="text"
                   id="subject"
@@ -188,12 +208,15 @@ const Contact = () => {
                   value={formData.subject}
                   onChange={handleChange}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
                 />
               </div>
               
               <div className="mb-6">
-                <label htmlFor="message" className="block text-sm font-medium mb-1 opacity-80">Wiadomość</label>
+                <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
+                  <FaRegComment className="text-primary" />
+                  <span>Wiadomość</span>
+                </label>
                 <textarea
                   id="message"
                   name="message"
@@ -201,20 +224,20 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent resize-none"
                 ></textarea>
               </div>
               
               <motion.button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary to-secondary py-3 rounded-lg text-white font-medium flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-primary to-secondary py-4 rounded-lg text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
                 whileHover={{ y: -2, boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)" }}
                 whileTap={{ y: 0 }}
                 disabled={isSubmitting || isSubmitted}
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
-                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                       <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                       <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                     </svg>
@@ -239,9 +262,9 @@ const Contact = () => {
         </div>
       </motion.div>
       
-      {/* Decorative elements */}
-      <div className="absolute top-1/4 left-10 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-1/4 right-10 w-64 h-64 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+      {/* Decorative elements - reduced size */}
+      <div className="absolute top-1/4 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
     </section>
   );
 };

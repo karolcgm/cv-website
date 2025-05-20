@@ -16,23 +16,24 @@ const BackgroundEffects = () => {
     renderer.setPixelRatio(window.devicePixelRatio);
     containerRef.current.appendChild(renderer.domElement);
     
-    // Create particles
+    // Create particles - REDUCED COUNT AND SIZE
     const particlesGeometry = new THREE.BufferGeometry();
-    const particlesCount = 1500;
+    const particlesCount = 800; // Reduced from 1500
     
     const posArray = new Float32Array(particlesCount * 3);
     
     for (let i = 0; i < particlesCount * 3; i++) {
-      posArray[i] = (Math.random() - 0.5) * 5;
+      posArray[i] = (Math.random() - 0.5) * 4; // Reduced range from 5 to 4
     }
     
     particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
     
-    // Materials
+    // Materials - REDUCED SIZE
     const particlesMaterial = new THREE.PointsMaterial({
-      size: 0.005,
+      size: 0.003, // Reduced from 0.005
       color: 0x6366f1,
       transparent: true,
+      opacity: 0.7, // Added opacity to make them less prominent
       blending: THREE.AdditiveBlending
     });
     
@@ -40,8 +41,8 @@ const BackgroundEffects = () => {
     const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
     scene.add(particlesMesh);
     
-    // Camera position
-    camera.position.z = 3;
+    // Camera position - MOVED FURTHER AWAY
+    camera.position.z = 4; // Increased from 3
     
     // Mouse interaction
     const mouseY = { current: 0 };
@@ -54,19 +55,19 @@ const BackgroundEffects = () => {
     
     document.addEventListener('mousemove', handleMouseMove);
     
-    // Animation
+    // Animation - SLOWED DOWN ROTATION
     const clock = new THREE.Clock();
     
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
       
       // Rotate particles
-      particlesMesh.rotation.y = elapsedTime * 0.05;
+      particlesMesh.rotation.y = elapsedTime * 0.03; // Slowed from 0.05
       
-      // Interactive rotation based on mouse position
+      // Interactive rotation based on mouse position - REDUCED SENSITIVITY
       if (mouseX.current > 0) {
-        particlesMesh.rotation.x = -mouseY.current * 0.0001;
-        particlesMesh.rotation.y = -mouseX.current * 0.0001;
+        particlesMesh.rotation.x = -mouseY.current * 0.00005; // Reduced from 0.0001
+        particlesMesh.rotation.y = -mouseX.current * 0.00005; // Reduced from 0.0001
       }
       
       // Render
