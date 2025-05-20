@@ -150,8 +150,8 @@ const Skills = () => {
                     key={i}
                     variants={skillVariants}
                     whileHover={{ 
-                      scale: 1.08, 
-                      boxShadow: '0 5px 15px -5px rgba(0, 0, 0, 0.2)'
+                      scale: 1.016, 
+                      boxShadow: '0 1px 3px -1px rgba(0, 0, 0, 0.2)'
                     }}
                     className={`px-4 py-2 bg-gradient-to-r ${category.color} bg-opacity-10 rounded-full text-sm font-medium relative overflow-hidden group/skill`}
                   >
@@ -204,7 +204,7 @@ const Skills = () => {
               <motion.li 
                 key={index}
                 className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-lg transition-all"
-                whileHover={{ x: 1 }}
+                whileHover={{ x: 0.2 }}
               >
                 <span className="text-pink-400 text-xl mt-0.5">•</span>
                 <span className="opacity-90">{skill}</span>

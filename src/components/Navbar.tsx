@@ -80,18 +80,10 @@ const Navbar = () => {
       }`}
     >
       <div className="flex justify-between items-center">
-        <motion.div 
-          className="text-xl md:text-2xl font-bold font-montserrat text-white"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-        >
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary animate-glow">
-            Piotr Peszko
-          </span>
-        </motion.div>
+        {/* Removed name from navbar */}
 
         {/* Desktop menu - increased spacing between items */}
-        <div className="hidden lg:flex space-x-28">
+        <div className="hidden lg:flex space-x-40">
           {menuItems.map((item) => (
             <Link
               key={item.id}
