@@ -91,7 +91,7 @@ const Navbar = () => {
         </motion.div>
 
         {/* Desktop menu - increased spacing between items */}
-        <div className="hidden lg:flex space-x-12">
+        <div className="hidden lg:flex space-x-28">
           {menuItems.map((item) => (
             <Link
               key={item.id}

@@ -1,54 +1,13 @@
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { 
   FaEnvelope, 
   FaPhone, 
-  FaMapMarkerAlt, 
-  FaPaperPlane, 
-  FaRegUser, 
-  FaRegEnvelope, 
-  FaRegComment, 
-  FaRegFileAlt 
+  FaMapMarkerAlt,
+  FaLinkedin,
+  FaGithub
 } from 'react-icons/fa';
 
 const Contact = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-      
-      // Reset form after 3 seconds
-      setTimeout(() => {
-        setIsSubmitted(false);
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: ''
-        });
-      }, 3000);
-    }, 1500);
-  };
-  
   const contactInfo = [
     {
       icon: <FaEnvelope className="text-xl" />,
@@ -67,6 +26,18 @@ const Contact = () => {
       label: "Lokalizacja",
       value: "Mikołów, Polska",
       link: "https://maps.google.com/?q=Mikołów,Poland"
+    },
+    {
+      icon: <FaLinkedin className="text-xl" />,
+      label: "LinkedIn",
+      value: "Profil LinkedIn",
+      link: "https://www.linkedin.com/in/piotr-peszko/"
+    },
+    {
+      icon: <FaGithub className="text-xl" />,
+      label: "GitHub",
+      value: "Profil GitHub",
+      link: "https://github.com/piotrpeszko"
     }
   ];
   
@@ -114,157 +85,47 @@ const Contact = () => {
           </h2>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+        <div className="flex justify-center">
           {/* Contact info */}
           <motion.div
             variants={itemVariants}
-            className="md:col-span-5"
+            className="w-full max-w-3xl"
           >
-            <div className="glassmorphism p-6 rounded-xl h-full">
-              <h3 className="text-xl font-semibold mb-6 text-primary">Informacje kontaktowe</h3>
+            <div className="glassmorphism p-8 rounded-xl">
+              <h3 className="text-2xl font-semibold mb-8 text-center text-gradient">Informacje kontaktowe</h3>
               
-              <div className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {contactInfo.map((info, index) => (
                   <motion.a
                     key={index}
                     href={info.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-start gap-4 hover:bg-white/5 p-3 rounded-lg transition-all contact-link"
-                    whileHover={{ x: 5 }}
+                    className="flex items-start gap-4 hover:bg-white/10 p-4 rounded-lg transition-all contact-link"
+                    whileHover={{ x: 5, backgroundColor: "rgba(255, 255, 255, 0.15)" }}
                   >
-                    <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg">
                       {info.icon}
                     </div>
                     <div>
-                      <p className="font-medium">{info.label}</p>
-                      <p className="text-sm opacity-80">{info.value}</p>
+                      <p className="font-medium text-lg">{info.label}</p>
+                      <p className="opacity-80">{info.value}</p>
                     </div>
                   </motion.a>
                 ))}
               </div>
               
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-sm opacity-70">
-                  Skontaktuj się ze mną, jeśli jesteś zainteresowany współpracą lub masz pytania
-                  dotyczące moich usług z zakresu programowania, automatyki domowej lub instalacji fotowoltaicznych.
-                </p>
+              <div className="mt-10 pt-6 border-t border-white/10 text-center">
+                {/* Removed paragraph as requested */}
               </div>
             </div>
-          </motion.div>
-          
-          {/* Contact form */}
-          <motion.div
-            variants={itemVariants}
-            className="md:col-span-7"
-          >
-            <form 
-              onSubmit={handleSubmit}
-              className="glassmorphism p-6 rounded-xl"
-            >
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="name" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
-                    <FaRegUser className="text-primary" />
-                    <span>Imię i nazwisko</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
-                  />
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
-                    <FaRegEnvelope className="text-primary" />
-                    <span>Email</span>
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
-                  />
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="subject" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
-                  <FaRegFileAlt className="text-primary" />
-                  <span>Temat</span>
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent"
-                />
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="message" className="flex items-center gap-2 text-sm font-medium mb-2 opacity-80">
-                  <FaRegComment className="text-primary" />
-                  <span>Wiadomość</span>
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  rows={5}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-transparent resize-none"
-                ></textarea>
-              </div>
-              
-              <motion.button
-                type="submit"
-                className="w-full bg-gradient-to-r from-primary to-secondary py-4 rounded-lg text-white font-medium flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
-                whileHover={{ y: -2, boxShadow: "0 10px 25px -5px rgba(99, 102, 241, 0.4)" }}
-                whileTap={{ y: 0 }}
-                disabled={isSubmitting || isSubmitted}
-              >
-                {isSubmitting ? (
-                  <span className="flex items-center gap-2">
-                    <svg className="animate-spin -ml-1 mr-2 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Wysyłanie...
-                  </span>
-                ) : isSubmitted ? (
-                  <span className="text-green-300 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path>
-                    </svg>
-                    Wysłano!
-                  </span>
-                ) : (
-                  <span className="flex items-center gap-2">
-                    <FaPaperPlane />
-                    Wyślij wiadomość
-                  </span>
-                )}
-              </motion.button>
-            </form>
           </motion.div>
         </div>
       </motion.div>
       
-      {/* Decorative elements - reduced size */}
-      <div className="absolute top-1/4 left-10 w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
-      <div className="absolute bottom-1/4 right-10 w-32 h-32 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+      {/* Decorative elements */}
+      <div className="absolute top-1/4 left-10 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-1/4 right-10 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl -z-10"></div>
     </section>
   );
 };
