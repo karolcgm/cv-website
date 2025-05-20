@@ -9,7 +9,6 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Skills from './components/Skills'
 import Courses from './components/Courses'
-import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import Loader from './components/Loader'
 import BackgroundEffects from './components/BackgroundEffects'
@@ -56,7 +55,6 @@ function App() {
         <Education />
         <Skills />
         <Courses />
-        <Contact />
       </main>
       <footer className="text-center py-8 text-sm opacity-60">
         © {new Date().getFullYear()} Piotr Peszko | Portfolio CV
