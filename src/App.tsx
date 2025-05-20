@@ -41,6 +41,24 @@ const App = () => {
         <div className="main-container">
           {/* Header */}
           <header className="header">
+            <div className="personal-data-bar mb-6 bg-opacity-20 rounded-lg p-3 flex flex-wrap justify-center" style={{ backgroundColor: 'rgba(99,102,241,0.1)' }}>
+              <div className="contact-item-small mx-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                <span>20.01.1988</span>
+              </div>
+              <div className="contact-item-small mx-2">
+                <span>Polska</span>
+              </div>
+              <div className="contact-item-small mx-2">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <span>Kategoria B</span>
+              </div>
+            </div>
+            
             <motion.h1
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -63,7 +81,7 @@ const App = () => {
               transition={{ duration: 0.7, delay: 0.5 }}
             >
               <a href="mailto:piotr.peszkoo@gmail.com" className="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
@@ -71,14 +89,14 @@ const App = () => {
               </a>
               
               <div className="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                 </svg>
                 <span>+48 535272451</span>
               </div>
               
               <div className="contact-item">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
                 </svg>
                 <span>Kukułcza 26, 43-190 Mikołów, Poland</span>
@@ -193,100 +211,73 @@ const App = () => {
                 </div>
               </Card>
 
-              <Card title="Umiejętności techniczne" delay={0.4} className="grid-col-span-2">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
-                      Języki programowania
-                    </h3>
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="tag">Java</span>
-                      <span className="tag">Kotlin</span>
-                      <span className="tag">SQL</span>
-                      <span className="tag">Swift</span>
+              <div className="grid-col-span-2">
+                <Card title="Umiejętności techniczne" delay={0.4} className="grid-col-span-2">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
+                        Języki programowania
+                      </h3>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        <span className="tag">Java</span>
+                        <span className="tag">Kotlin</span>
+                        <span className="tag">SQL</span>
+                        <span className="tag">Swift</span>
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
+                        Języki obce
+                      </h3>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        <span className="tag">Angielski - B2</span>
+                      </div>
                     </div>
                   </div>
                   
-                  <div>
+                  <div className="mt-6">
                     <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
-                      Języki obce
+                      Znajomość SOFT/IDE
                     </h3>
                     <div className="flex flex-wrap gap-2 mt-4">
-                      <span className="tag">
-                        <span className="mr-1">🇬🇧</span> Angielski - B2
-                      </span>
+                      <span className="tag">Eclipse</span>
+                      <span className="tag">IntelliJ IDEA</span>
+                      <span className="tag">Xcode</span>
+                      <span className="tag">GitHub</span>
+                      <span className="tag">Środowisko Docker</span>
+                      <span className="tag">Springbot</span>
+                      <span className="tag">React</span>
+                      <span className="tag">PostgreSQL</span>
+                      <span className="tag">Cassandra</span>
+                      <span className="tag">MongoDB</span>
                     </div>
                   </div>
-                </div>
-                
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
-                    Znajomość SOFT/IDE
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="tag">Eclipse</span>
-                    <span className="tag">IntelliJ IDEA</span>
-                    <span className="tag">Xcode</span>
-                    <span className="tag">GitHub</span>
-                    <span className="tag">Środowisko Docker</span>
-                    <span className="tag">Springbot</span>
-                    <span className="tag">React</span>
-                    <span className="tag">PostgreSQL</span>
-                    <span className="tag">Cassandra</span>
-                    <span className="tag">MongoDB</span>
+                  
+                  <div className="mt-6">
+                    <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
+                      Znajomość AI
+                    </h3>
+                    <div className="flex flex-wrap gap-2 mt-4">
+                      <span className="tag">Ollama + Deepseek</span>
+                      <span className="tag">API OpenAI</span>
+                      <span className="tag">API Anthropic</span>
+                      <span className="tag">Cursor</span>
+                    </div>
                   </div>
-                </div>
-                
-                <div className="mt-6">
-                  <h3 className="text-lg font-semibold mb-3 pb-1 border-b border-opacity-20" style={{color: 'var(--primary-light)', borderColor: 'var(--primary)'}}>
-                    Znajomość AI
-                  </h3>
-                  <div className="flex flex-wrap gap-2 mt-4">
-                    <span className="tag">Ollama + Deepseek</span>
-                    <span className="tag">API OpenAI</span>
-                    <span className="tag">API Anthropic</span>
-                    <span className="tag">Cursor</span>
-                  </div>
-                </div>
-              </Card>
+                </Card>
+              </div>
               
-              <Card title="Dodatkowe umiejętności i osiągnięcia" delay={0.5}>
-                <ul className="custom-list space-y-4">
-                  <li>Umiejętność współpracy z klientami w relacjach B2B oraz B2C, tworzenie ofert, planowanie, realizacja, budowanie wizerunku firmy</li>
-                  <li>Opracowanie, zaprogramowanie oraz zbudowanie systemu komercyjnego do zbierania danych telemetrycznych oraz analizy i ich prezentacji. System został zbudowany dla potrzeb monitorowania oraz sterowania instalacją prototypową firmy SOLHOTAIR</li>
-                  <li>Podstawowa znajomość programów do tworzenia obiektów 3D</li>
-                  <li>Bardzo dobra znajomość w zakresie obsługi, naprawy oraz serwisowania komputerów (Hardware, Software)</li>
-                </ul>
-              </Card>
-              
-              <Card title="Dane personalne" delay={0.6}>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(99,102,241,0.15)' }}>
-                    <p className="text-sm font-medium mb-1" style={{ color: 'var(--primary-light)' }}>Data urodzenia</p>
-                    <p className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" style={{ color: 'var(--primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                      20.01.1988
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(99,102,241,0.15)' }}>
-                    <p className="text-sm font-medium mb-1" style={{ color: 'var(--primary-light)' }}>Narodowość</p>
-                    <p className="flex items-center gap-2">
-                      <span>🇵🇱</span>Polska
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg" style={{ backgroundColor: 'rgba(99,102,241,0.15)' }}>
-                    <p className="text-sm font-medium mb-1" style={{ color: 'var(--primary-light)' }}>Prawo jazdy</p>
-                    <p className="flex items-center gap-2">
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" style={{ color: 'var(--primary)' }} fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                      </svg>
-                      Kategoria B
-                    </p>
-                  </div>
-                </div>
-              </Card>
+              <div className="grid-col-span-2">
+                <Card title="Dodatkowe umiejętności i osiągnięcia" delay={0.5}>
+                  <ul className="custom-list space-y-4">
+                    <li>Umiejętność współpracy z klientami w relacjach B2B oraz B2C, tworzenie ofert, planowanie, realizacja, budowanie wizerunku firmy</li>
+                    <li>Opracowanie, zaprogramowanie oraz zbudowanie systemu komercyjnego do zbierania danych telemetrycznych oraz analizy i ich prezentacji. System został zbudowany dla potrzeb monitorowania oraz sterowania instalacją prototypową firmy SOLHOTAIR</li>
+                    <li>Podstawowa znajomość programów do tworzenia obiektów 3D</li>
+                    <li>Bardzo dobra znajomość w zakresie obsługi, naprawy oraz serwisowania komputerów (Hardware, Software)</li>
+                  </ul>
+                </Card>
+              </div>
             </div>
           </main>
           
