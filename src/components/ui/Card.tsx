@@ -11,7 +11,6 @@ interface CardProps {
 const Card = ({ title, children, className = '', delay = 0 }: CardProps) => {
   // Używane do efektu przechylania karty
   const cardRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
   const [hovered, setHovered] = useState(false);
   
   // Zaawansowane zmienne ruchu z framer-motion
@@ -44,8 +43,7 @@ const Card = ({ title, children, className = '', delay = 0 }: CardProps) => {
     const mouseX = e.clientX - centerX;
     const mouseY = e.clientY - centerY;
     
-    // Aktualizacja pozycji
-    setPosition({ x: mouseX, y: mouseY });
+    // Aktualizacja pozycji dla efektu
     x.set(mouseX / 8); // Dzielenie aby zmniejszyć intensywność efektu
     y.set(mouseY / 8);
   };
@@ -59,7 +57,6 @@ const Card = ({ title, children, className = '', delay = 0 }: CardProps) => {
     // Reset pozycji
     x.set(0);
     y.set(0);
-    setPosition({ x: 0, y: 0 });
   };
 
   // Efekt świecenia podążający za kursorem
