@@ -149,7 +149,7 @@ const App = () => {
                     PIOTR PESZKO
                   </h2>
                   <div className="mt-2 mb-4 text-sm">
-                    <p>20.01.2025</p>
+                    <p>20.01.1988</p>
                     <p>Polska</p>
                   </div>
                 </div>
@@ -188,7 +188,6 @@ const App = () => {
                       <span className="font-medium" style={{color: 'var(--primary-light)'}}>FIBER ACADEMY PLAY</span>
                       <span className="date-badge">05.2025</span>
                     </div>
-                    <p className="job-description">Certyfikat uczestnictwa w szkoleniu</p>
                   </div>
 
                   <div className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(99,102,241,0.1)]">
