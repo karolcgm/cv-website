@@ -83,7 +83,7 @@ const Navbar = () => {
         {/* Removed name from navbar */}
 
         {/* Desktop menu - increased spacing between items */}
-        <div className="hidden lg:flex space-x-40">
+        <div className="hidden lg:flex gap-12">
           {menuItems.map((item) => (
             <Link
               key={item.id}
@@ -93,7 +93,7 @@ const Navbar = () => {
               offset={-70}
               duration={500}
               activeClass="text-primary"
-              className="flex items-center space-x-1 text-sm font-medium text-white opacity-80 hover:opacity-100 hover:text-primary transition-all cursor-pointer whitespace-nowrap"
+              className="flex items-center space-x-1 text-sm font-medium text-white opacity-80 hover:opacity-100 hover:text-primary transition-all cursor-pointer whitespace-nowrap px-6"
             >
               <span className="text-xs">{item.icon}</span>
               <span>{item.name}</span>

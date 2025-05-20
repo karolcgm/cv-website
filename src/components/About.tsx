@@ -54,7 +54,7 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
           >
-            <div className="glassmorphism p-6 rounded-xl h-full">
+            <div className="p-6 rounded-xl h-full bg-white/0 shadow-none">
               <h3 className="text-xl font-semibold mb-4 text-primary">Profil zawodowy</h3>
               <div className="space-y-4">
                 <p>
@@ -87,7 +87,7 @@ const About = () => {
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <div className="glassmorphism p-6 rounded-xl h-full">
+            <div className="p-6 rounded-xl h-full bg-white/0 shadow-none">
               <h3 className="text-xl font-semibold mb-4 text-primary">Dane personalne</h3>
               <div className="space-y-4">
                 {personalInfo.map((info, index) => (
