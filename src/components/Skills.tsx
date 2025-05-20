@@ -204,7 +204,7 @@ const Skills = () => {
               <motion.li 
                 key={index}
                 className="flex items-start gap-3 p-3 hover:bg-white/5 rounded-lg transition-all"
-                whileHover={{ x: 3, backgroundColor: "rgba(255, 255, 255, 0.08)" }}
+                whileHover={{ x: 1 }}
               >
                 <span className="text-pink-400 text-xl mt-0.5">•</span>
                 <span className="opacity-90">{skill}</span>
