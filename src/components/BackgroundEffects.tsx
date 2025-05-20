@@ -21,7 +21,7 @@ const BackgroundEffects = () => {
     containerRef.current.appendChild(renderer.domElement);
     
     // Create multiple star layers with different colors
-    const createStarField = (count, size, color, range) => {
+    const createStarField = (count: number, size: number, color: number, range: number) => {
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(count * 3);
       
