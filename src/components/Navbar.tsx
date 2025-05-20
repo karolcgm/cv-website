@@ -90,8 +90,8 @@ const Navbar = () => {
           </span>
         </motion.div>
 
-        {/* Desktop menu */}
-        <div className="hidden md:flex space-x-8">
+        {/* Desktop menu - increased spacing between items */}
+        <div className="hidden lg:flex space-x-12">
           {menuItems.map((item) => (
             <Link
               key={item.id}
@@ -101,7 +101,7 @@ const Navbar = () => {
               offset={-70}
               duration={500}
               activeClass="text-primary"
-              className="flex items-center space-x-1 text-sm font-medium text-white opacity-80 hover:opacity-100 hover:text-primary transition-all cursor-pointer"
+              className="flex items-center space-x-1 text-sm font-medium text-white opacity-80 hover:opacity-100 hover:text-primary transition-all cursor-pointer whitespace-nowrap"
             >
               <span className="text-xs">{item.icon}</span>
               <span>{item.name}</span>
@@ -111,7 +111,7 @@ const Navbar = () => {
 
         {/* Mobile menu toggle */}
         <motion.button
-          className="flex md:hidden text-2xl text-white focus:outline-none"
+          className="flex lg:hidden text-2xl text-white focus:outline-none"
           whileTap={{ scale: 0.9 }}
           onClick={toggleMenu}
         >
@@ -127,7 +127,7 @@ const Navbar = () => {
             animate="open"
             exit="closed"
             variants={mobileMenuVariants}
-            className="fixed inset-0 z-50 flex justify-end md:hidden"
+            className="fixed inset-0 z-50 flex justify-end lg:hidden"
           >
             <motion.div 
               className="bg-gradient-to-b from-[#111827] to-[#1f2937] w-3/4 h-full shadow-xl glassmorphism"
@@ -142,7 +142,7 @@ const Navbar = () => {
                   <FaTimes />
                 </motion.button>
               </div>
-              <div className="flex flex-col space-y-4 p-6">
+              <div className="flex flex-col space-y-6 p-6">
                 {menuItems.map((item) => (
                   <motion.div key={item.id} variants={menuItemVariants}>
                     <Link

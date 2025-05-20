@@ -33,7 +33,7 @@ body {
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
   font-size: 1.6rem;
-  line-height: 1.5;
+  line-height: 1.7;
   overflow-x: hidden;
 }
 
@@ -55,32 +55,57 @@ body::before {
   max-width: 1140px !important;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
 }
 
 /* Improved spacing between sections */
 section {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  margin-bottom: 2rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  margin-bottom: 3rem;
 }
 
 /* Improved spacing between elements */
 .gap-6 {
-  gap: 2.5rem !important;
-}
-
-.gap-8 {
   gap: 3rem !important;
 }
 
+.gap-8 {
+  gap: 3.5rem !important;
+}
+
 .mb-12 {
-  margin-bottom: 4rem !important;
+  margin-bottom: 5rem !important;
 }
 
 .p-6 {
-  padding: 2rem !important;
+  padding: 2.5rem !important;
+}
+
+/* Additional spacing utilities */
+.card-container {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  margin-bottom: 3.5rem;
+}
+
+.card-hover-area {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Animation behavior for cards */
+.card-animation {
+  transition: transform 0.3s ease;
+  transform-origin: center bottom;
+}
+
+.card-animation:hover {
+  z-index: 10;
 }
 
 /* Custom animations */
@@ -266,8 +291,8 @@ a:hover {
   }
   
   section {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
   }
 }
 

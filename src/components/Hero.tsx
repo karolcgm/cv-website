@@ -77,8 +77,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="py-16 md:py-24 relative overflow-hidden">
-      {/* Centered name with fade effect */}
+    <section className="py-16 md:py-28 relative overflow-hidden">
+      {/* Centered name with fade effect and CV header */}
       <motion.div
         variants={nameVariants}
         initial="hidden"
@@ -86,20 +86,26 @@ const Hero = () => {
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-0"
       >
         <div className="text-center">
-          <h1 className="text-8xl md:text-9xl font-bold font-montserrat text-white/5">
-            PIOTR PESZKO
-          </h1>
+          <div className="mb-8 text-center">
+            <h1 className="text-9xl md:text-[12rem] font-bold font-montserrat text-white/5 leading-none tracking-tight">
+              CV
+            </h1>
+            <h2 className="text-8xl md:text-9xl font-bold font-montserrat text-white/5 tracking-tight -mt-16">
+              PIOTR PESZKO
+            </h2>
+          </div>
         </div>
       </motion.div>
 
       <div className="container mx-auto relative z-10">
+        {/* Increased top margin to separate from the background text */}
         <motion.div
-          className="text-center mb-16"
+          className="text-center mb-24 mt-32"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-6 animate-glow">
+          <h2 className="text-3xl md:text-4xl font-bold font-montserrat mb-8 animate-glow">
             Specjalista od Automatyki i Programista 
           </h2>
           <p className="text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">
@@ -108,8 +114,9 @@ const Hero = () => {
           </p>
         </motion.div>
 
+        {/* Increased spacing by using padding and increased gap */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-24 px-6"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -117,7 +124,7 @@ const Hero = () => {
           {cards.map((card, index) => (
             <motion.div
               key={index}
-              className="glassmorphism p-6 rounded-xl"
+              className="glassmorphism p-6 rounded-xl h-full" // Added h-full for consistent heights
               variants={itemVariants}
               whileHover={{ 
                 y: -10, 
@@ -133,7 +140,7 @@ const Hero = () => {
         </motion.div>
 
         <motion.div
-          className="flex flex-col sm:flex-row justify-center items-center gap-6"
+          className="flex flex-col sm:flex-row justify-center items-center gap-6 mb-10"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
