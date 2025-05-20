@@ -10,6 +10,20 @@
   --secondary-color: #ec4899;
   --accent-color: #06b6d4;
   --text-color: #f8fafc;
+  --primary-glow: conic-gradient(
+    from 180deg at 50% 50%,
+    #16abff33 0deg,
+    #0885ff33 55deg,
+    #54d6ff33 120deg,
+    #0071ff33 160deg,
+    transparent 360deg
+  );
+  --secondary-glow: radial-gradient(
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+  --card-rgb: 23, 25, 35;
+  --card-border-rgb: 50, 60, 100;
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -37,11 +51,9 @@ html {
 
 body {
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(
-    to bottom,
-    rgb(var(--background-start-rgb)),
-    rgb(var(--background-end-rgb))
-  );
+  background: radial-gradient(circle at top, rgba(10, 10, 50, 0.8), transparent 600px),
+              radial-gradient(circle at bottom, rgba(70, 50, 150, 0.3), transparent 600px);
+  background-color: #000;
   color: rgb(var(--foreground-rgb));
   min-height: 100vh;
   font-size: 1.6rem;
@@ -345,22 +357,154 @@ a:hover {
 
 /* Nowe style */
 .card {
-  @apply rounded-xl backdrop-blur-sm border border-gray-800 bg-gray-900/40 p-6 
-  shadow-lg transition-all duration-300 hover:shadow-indigo-500/10 
-  hover:border-gray-700 hover:bg-gray-900/50;
+  @apply rounded-2xl border border-indigo-800/40 p-7
+  backdrop-blur-md shadow-xl transition-all duration-300
+  bg-gradient-to-br from-gray-900/80 to-gray-950/90
+  hover:shadow-indigo-500/20 hover:border-indigo-700/60;
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.6s ease-in-out;
+  z-index: -1;
+  transform: translate3d(0, 0, 0);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(99, 102, 241, 0.4) 50%,
+    transparent 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card:hover::after {
+  transform: scaleX(1);
 }
 
 .card-title {
-  @apply mb-6 text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r 
-  from-blue-400 to-purple-600;
+  @apply mb-6 text-xl font-bold;
+  background: linear-gradient(90deg, #4f46e5, #818cf8, #4f46e5);
+  background-size: 200% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient-shift 8s ease infinite;
+  text-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+  position: relative;
+  display: inline-block;
 }
 
+.card-title::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, #4f46e5, transparent);
+  transition: width 0.3s ease;
+}
+
+.card:hover .card-title::after {
+  width: 100%;
+}
+
+/* Skills tags */
 .skill-tag {
-  @apply rounded-full bg-blue-900/40 px-3 py-1 text-sm text-blue-300 
-  border border-blue-800/50 hover:bg-blue-800/60 transition-colors duration-200;
+  @apply rounded-xl bg-indigo-900/30 px-3 py-1.5 text-sm text-indigo-300 
+  border border-indigo-800/40 transition-all duration-300;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
 }
 
-/* Animacje */
+.skill-tag:hover {
+  @apply bg-indigo-800/40 text-indigo-200 border-indigo-700/50;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+}
+
+.skill-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.1), 
+    transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-tag:hover::before {
+  left: 100%;
+}
+
+/* Text styling */
+.text-gray-300 {
+  @apply transition-colors duration-300;
+}
+
+.card:hover .text-gray-300 {
+  @apply text-gray-200;
+}
+
+.font-semibold.text-blue-400 {
+  @apply transition-all duration-300;
+}
+
+.card:hover .font-semibold.text-blue-400 {
+  @apply text-indigo-300;
+  text-shadow: 0 0 10px rgba(99, 102, 241, 0.4);
+}
+
+/* Hero section styling */
+#hero h1 {
+  @apply text-6xl font-extrabold tracking-tight;
+  background: linear-gradient(90deg, 
+    #4f46e5, #818cf8, #a78bfa, #c084fc, #818cf8, #4f46e5);
+  background-size: 300% auto;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: gradient-shift 10s ease infinite;
+  text-shadow: 0 0 30px rgba(99, 102, 241, 0.3);
+}
+
+.contact-item {
+  @apply transition-all duration-300 hover:translate-y-[-2px];
+}
+
+.contact-item:hover svg {
+  @apply text-indigo-400;
+  filter: drop-shadow(0 0 8px rgba(99, 102, 241, 0.6));
+}
+
+/* Animations */
 @keyframes gradient-shift {
   0% {
     background-position: 0% 50%;
@@ -378,9 +522,59 @@ a:hover {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
   }
   100% {
     transform: translateY(0px);
   }
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.8;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(99, 102, 241, 0.5);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    @apply p-5;
+  }
+  
+  .card-title {
+    @apply text-lg mb-4;
+  }
+  
+  #hero h1 {
+    @apply text-4xl;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cols-custom {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Custom scroll bar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(10, 10, 30, 0.2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.6);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.8);
 } 
