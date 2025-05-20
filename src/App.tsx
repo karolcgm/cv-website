@@ -98,7 +98,7 @@ const App = () => {
                           <h3 className="job-title">Monter</h3>
                           <p className="job-company">GU-BAU Technic, Szwajcaria, Ebnat-Kappel</p>
                         </div>
-                        <span className="date-badge">10.2024 - obecnie</span>
+                        <span className="date-badge">09.2022 - 01.2023</span>
                       </div>
                       <ul className="custom-list">
                         <li>Instalacja oraz integracja urządzeń grzewczych z systemami chmurowymi</li>
@@ -157,7 +157,7 @@ const App = () => {
                   <div>
                     <div className="flex flex-wrap justify-between mb-2">
                       <h3 className="job-title">Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie</h3>
-                      <span className="date-badge">koniec 2025</span>
+                      <span className="date-badge">1.10.2008 - 8.06.2013</span>
                     </div>
                     <p className="job-description">Kierunek "Geodezja i Kartografia"</p>
                   </div>
@@ -165,10 +165,11 @@ const App = () => {
                   <div>
                     <div className="flex flex-wrap justify-between mb-2">
                       <h3 className="job-title">Politechnika Śląska Gliwice</h3>
-                      <span className="date-badge">09.2022 - 01.2023</span>
+                      <span className="date-badge">10.2024 - obecnie</span>
                     </div>
                     <p className="job-description">Studia podyplomowe</p>
                     <p className="job-description">Kierunek Inżynieria Aplikacji Mobilnych i Baz Danych</p>
+                    <p className="job-description">Planowane zakończenie: koniec 2025</p>
                   </div>
                 </div>
               </Card>
@@ -177,16 +178,15 @@ const App = () => {
                 <div className="space-y-4">
                   <div className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(99,102,241,0.1)]">
                     <div className="flex justify-between items-center">
-                      <span className="font-medium" style={{color: 'var(--primary-light)'}}>GoodWe+</span>
-                      <span className="date-badge">05.2025</span>
+                      <span className="font-medium" style={{color: 'var(--primary-light)'}}>Certyfikat profesjonalnego instalatora firmy GoodWe</span>
+                      <span className="date-badge">03.2021</span>
                     </div>
-                    <p className="job-description">Certyfikat profesjonalnego instalatora firmy GoodWe</p>
                   </div>
 
                   <div className="p-3 rounded-lg transition-all duration-300 hover:bg-[rgba(99,102,241,0.1)]">
                     <div className="flex justify-between items-center">
                       <span className="font-medium" style={{color: 'var(--primary-light)'}}>FIBER ACADEMY PLAY</span>
-                      <span className="date-badge">03.2021</span>
+                      <span className="date-badge">05.2025</span>
                     </div>
                     <p className="job-description">Certyfikat uczestnictwa w szkoleniu</p>
                   </div>
