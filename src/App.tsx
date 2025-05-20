@@ -9,7 +9,6 @@ import Experience from './components/Experience'
 import Education from './components/Education'
 import Skills from './components/Skills'
 import Courses from './components/Courses'
-import Navbar from './components/Navbar'
 import Loader from './components/Loader'
 import BackgroundEffects from './components/BackgroundEffects'
 
@@ -46,7 +45,6 @@ function App() {
       className="relative"
     >
       <BackgroundEffects />
-      <Navbar />
       <Header />
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 pb-20">
         <Hero />
