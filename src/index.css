@@ -283,6 +283,10 @@ body {
   background: rgba(99, 102, 241, 0.1);
   margin: 0.25rem;
   text-align: left;
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .contact-info a:hover, 
