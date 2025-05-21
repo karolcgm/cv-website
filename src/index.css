@@ -263,43 +263,44 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-  gap: 1rem;
+  align-items: flex-start;
+  gap: 2rem;
   margin-top: 1.5rem;
   flex-wrap: wrap;
 }
 
-.contact-info a, 
-.contact-info div,
-.contact-item {
+.contact-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 200px;
+}
+
+.contact-icon-wrapper {
   display: flex;
   align-items: center;
-  color: white;
-  text-decoration: none;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(99, 102, 241, 0.15);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
   transition: all 0.2s ease;
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background: rgba(99, 102, 241, 0.1);
-  margin: 0.25rem;
-  text-align: left;
-  min-width: 300px;
-  width: auto;
-  max-width: 350px;
-}
-
-.contact-info a:hover, 
-.contact-info div:hover,
-.contact-item:hover {
-  background: rgba(99, 102, 241, 0.2);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
-}
-
-.contact-info svg {
-  flex-shrink: 0;
-  margin-right: 0.75rem;
   color: var(--primary-light);
+}
+
+.contact-icon-wrapper:hover {
+  background: rgba(99, 102, 241, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.2);
+}
+
+.contact-text {
+  font-size: 0.85rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  word-break: break-word;
 }
 
 /* stopka */
