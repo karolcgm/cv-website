@@ -4,6 +4,8 @@ import BackgroundEffects from './components/BackgroundEffects'
 import Card from './components/ui/Card'
 import './index.css'
 
+// Ostatnia aktualizacja: CV Piotr Peszko
+
 const App = () => {
   const [loading, setLoading] = useState(true)
 
