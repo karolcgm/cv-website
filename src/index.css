@@ -35,7 +35,7 @@ body {
   line-height: 1.6;
 }
 
-/* Główny layout */
+/* Główny kontener z marginesem*/
 .main-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -44,7 +44,7 @@ body {
   z-index: 10;
 }
 
-/* Układy siatki */
+/* Siatka */
 .grid-layout {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -61,7 +61,7 @@ body {
   }
 }
 
-/* Karty */
+/* Style kart */
 .card-container {
   margin-bottom: 1.5rem;
   height: 100%;
@@ -112,7 +112,7 @@ body {
   font-size: 0.95rem;
 }
 
-/* Stylizacje elementów */
+/* Style dla tagów */
 .tag {
   display: inline-flex;
   align-items: center;
@@ -132,6 +132,7 @@ body {
   box-shadow: 0 4px 12px rgba(99, 102, 241, 0.15);
 }
 
+/* data */
 .date-badge {
   background: rgba(99, 102, 241, 0.15);
   padding: 0.3rem 0.7rem;
@@ -141,6 +142,7 @@ body {
   display: inline-flex;
 }
 
+/* timeline w doswiadczeniu */
 .timeline-item {
   position: relative;
   padding-left: 1.5rem;
@@ -189,7 +191,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* Efekty animacji */
+/* Animacje */
 @keyframes shimmerAnimation {
   0% {
     background-position: 0% 50%;
@@ -215,7 +217,7 @@ body {
   animation: floatAnimation 5s ease-in-out infinite;
 }
 
-/* Listy */
+/* lista z punktami */
 .custom-list {
   list-style: none;
   padding: 0;
@@ -235,7 +237,7 @@ body {
   color: var(--primary);
 }
 
-/* Header i nawigacja */
+/* header */
 .header {
   text-align: center;
   margin-bottom: 3rem;
@@ -256,6 +258,7 @@ body {
   margin: 1.5rem auto 2rem;
 }
 
+/* kontakty */
 .contact-info {
   display: flex;
   flex-direction: row;
@@ -296,7 +299,7 @@ body {
   color: var(--primary-light);
 }
 
-/* Stopka */
+/* stopka */
 .footer {
   text-align: center;
   padding: 1.5rem;
@@ -304,7 +307,7 @@ body {
   font-size: 0.9rem;
 }
 
-/* Responsywność */
+/* dla mniejszych ekranów */
 @media (max-width: 768px) {
   .grid-layout {
     grid-template-columns: 1fr;
@@ -319,7 +322,7 @@ body {
   }
 }
 
-/* Scrollbar customowy */
+/* scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }

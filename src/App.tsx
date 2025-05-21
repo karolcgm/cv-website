@@ -4,18 +4,16 @@ import BackgroundEffects from './components/BackgroundEffects'
 import Card from './components/ui/Card'
 import './index.css'
 
-// Ostatnia aktualizacja: CV Piotr Peszko
+// CV Piotr Peszko - ostatnia zmiana 21.05.2025
 
 const App = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    // Symulacja ładowania
-    const timer = setTimeout(() => {
+    // czekamy 2 sekundy na załadowanie
+    setTimeout(() => {
       setLoading(false)
     }, 2000)
-
-    return () => clearTimeout(timer)
   }, [])
 
   if (loading) {
@@ -30,18 +28,18 @@ const App = () => {
 
   return (
     <div className="relative min-h-screen" style={{ backgroundColor: 'var(--background)' }}>
-      {/* Tło z gwiazdami */}
+      {/* gwiazdy w tle */}
       <div className="fixed inset-0 z-0">
         <BackgroundEffects />
       </div>
       
-      {/* Maski cieniowania na górze i dole */}
+      {/* cienie na gorze i dole zeby lepiej bylo widac */}
       <div className="absolute top-0 left-0 right-0 h-40 bg-gradient-to-b from-[#0f1129] to-transparent z-10"></div>
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0f1129] to-transparent z-10"></div>
 
       <div className="relative z-20">
         <div className="main-container">
-          {/* Header */}
+          {/* naglowek */}
           <header className="header">
             <motion.div
               className="text-center mb-4"
@@ -100,10 +98,10 @@ const App = () => {
             </motion.div>
           </header>
 
-          {/* Główna zawartość */}
+          {/* zawartosc */}
           <main>
             <div className="grid-layout">
-              {/* Edukacja (przeniesiona jako pierwsza kolumna) */}
+              {/* edukacja - pierwsza kolumna*/}
               <Card title="Edukacja" delay={0.1}>
                 <div className="space-y-5">
                   <div>

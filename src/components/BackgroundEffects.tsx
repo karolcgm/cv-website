@@ -7,20 +7,20 @@ const BackgroundEffects = () => {
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Setup
+    // podstawy threejs
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     
-    // Make renderer wider - 95% of height and width
+    // ustawiam renderer trochę mniejszy żeby wyglądało lepiej
     const width = window.innerWidth * 0.95;
     const height = window.innerHeight * 0.95;
     
     renderer.setSize(width, height);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Better performance
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // lepiej działa
     containerRef.current.appendChild(renderer.domElement);
     
-    // Create multiple star layers with different colors
+    // funkcja do robienia gwiazd
     const createStarField = (count: number, size: number, color: number, range: number) => {
       const geometry = new THREE.BufferGeometry();
       const positions = new Float32Array(count * 3);
@@ -44,7 +44,7 @@ const BackgroundEffects = () => {
       return new THREE.Points(geometry, material);
     };
     
-    // Create multiple star layers with different colors
+    // robię kilka warstw gwiazd z innymi kolorami
     const starField1 = createStarField(700, 0.015, 0xffffff, 8);
     const starField2 = createStarField(500, 0.012, 0x88ccff, 9);
     const starField3 = createStarField(300, 0.02, 0xff88ff, 7);
@@ -53,7 +53,7 @@ const BackgroundEffects = () => {
     scene.add(starField2);
     scene.add(starField3);
     
-    // Create Sun with glowing effect
+    // dodaję słońce ze świeceniem
     const sunGeometry = new THREE.SphereGeometry(0.35, 32, 32);
     const sunTexture = new THREE.TextureLoader().load('/textures/2k_sun.jpg');
     const sunMaterial = new THREE.MeshBasicMaterial({
@@ -65,12 +65,12 @@ const BackgroundEffects = () => {
     sun.position.set(1.8, 1.2, -3);
     scene.add(sun);
     
-    // Add glow to sun
+    // światło od słońca
     const sunLight = new THREE.PointLight(0xffaa00, 2, 12);
     sunLight.position.copy(sun.position);
     scene.add(sunLight);
     
-    // Create glow sphere around the sun
+    // efekt świecenia słońca (pierwsza warstwa)
     const sunGlowGeometry = new THREE.SphereGeometry(0.45, 32, 32);
     const sunGlowMaterial = new THREE.MeshBasicMaterial({
       color: 0xffdd55,
@@ -82,7 +82,7 @@ const BackgroundEffects = () => {
     sunGlow.position.copy(sun.position);
     scene.add(sunGlow);
     
-    // Outer glow
+    // drugie świecenie (zewnętrzna warstwa)
     const outerGlowGeometry = new THREE.SphereGeometry(0.6, 32, 32);
     const outerGlowMaterial = new THREE.MeshBasicMaterial({
       color: 0xff5500,
@@ -94,8 +94,8 @@ const BackgroundEffects = () => {
     outerGlow.position.copy(sun.position);
     scene.add(outerGlow);
     
-    // Create planets with textures
-    // Earth-like planet
+    // teraz robię planety
+    // Ziemia
     const planet1Geometry = new THREE.SphereGeometry(0.15, 32, 32);
     const planet1Texture = new THREE.TextureLoader().load('/textures/2k_earth_daymap.jpg');
     const planet1Material = new THREE.MeshPhongMaterial({ 
@@ -106,7 +106,7 @@ const BackgroundEffects = () => {
     planet1.position.set(-1.5, -0.8, -2);
     scene.add(planet1);
     
-    // Add atmosphere to Earth
+    // atmosfera ziemi
     const earthAtmosphereGeometry = new THREE.SphereGeometry(0.158, 32, 32);
     const earthAtmosphereMaterial = new THREE.MeshPhongMaterial({
       color: 0x88aaff,
@@ -118,7 +118,7 @@ const BackgroundEffects = () => {
     earthAtmosphere.position.copy(planet1.position);
     scene.add(earthAtmosphere);
     
-    // Mars-like planet
+    // mars
     const planet2Geometry = new THREE.SphereGeometry(0.18, 32, 32);
     const planet2Texture = new THREE.TextureLoader().load('/textures/2k_mars.jpg');
     const planet2Material = new THREE.MeshPhongMaterial({ map: planet2Texture });
@@ -126,7 +126,7 @@ const BackgroundEffects = () => {
     planet2.position.set(2.2, -1.5, -3);
     scene.add(planet2);
     
-    // Gas giant planet
+    // jakiś gazowy gigant jak jowisz
     const planet3Geometry = new THREE.SphereGeometry(0.25, 32, 32);
     const planet3Texture = new THREE.TextureLoader().load('/textures/2k_jupiter.jpg');
     const planet3Material = new THREE.MeshPhongMaterial({ map: planet3Texture });
@@ -134,7 +134,7 @@ const BackgroundEffects = () => {
     planet3.position.set(-2.2, 1.5, -4);
     scene.add(planet3);
     
-    // Create ring system for gas giant
+    // pierścienie dla gazowego giganta
     const ringGeometry = new THREE.RingGeometry(0.3, 0.45, 64);
     const ringMaterial = new THREE.MeshBasicMaterial({
       color: 0xcdcdcd,
@@ -147,19 +147,19 @@ const BackgroundEffects = () => {
     ring.rotation.x = Math.PI / 2.5;
     scene.add(ring);
     
-    // Add ambient light
+    // światło otoczenia
     const ambientLight = new THREE.AmbientLight(0x404040, 0.5);
     scene.add(ambientLight);
     
-    // Add directional light from sun
+    // światło kierunkowe od słońca
     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
     directionalLight.position.copy(sun.position);
     scene.add(directionalLight);
     
-    // Camera position
+    // kamera
     camera.position.z = 4;
     
-    // Mouse interaction
+    // obsługa interakcji myszką
     const mouseY = { current: 0 };
     const mouseX = { current: 0 };
     
@@ -170,13 +170,13 @@ const BackgroundEffects = () => {
     
     document.addEventListener('mousemove', handleMouseMove);
     
-    // Animation
+    // animacja wszystkiego
     const clock = new THREE.Clock();
     
     const animate = () => {
       const elapsedTime = clock.getElapsedTime();
       
-      // Rotate star fields at different speeds
+      // obracam gwiazdy z różnymi prędkościami
       starField1.rotation.y = elapsedTime * 0.02;
       starField1.rotation.x = elapsedTime * 0.01;
       
@@ -186,25 +186,25 @@ const BackgroundEffects = () => {
       starField3.rotation.y = elapsedTime * 0.01;
       starField3.rotation.z = elapsedTime * 0.008;
       
-      // Rotate sun
+      // obracam słońce
       sun.rotation.y = elapsedTime * 0.05;
       
-      // Pulsate sun glow
+      // pulsowanie słońca
       const pulseFactor = (Math.sin(elapsedTime * 2) * 0.05) + 1;
       sunGlow.scale.set(pulseFactor, pulseFactor, pulseFactor);
       outerGlow.scale.set(pulseFactor * 0.9, pulseFactor * 0.9, pulseFactor * 0.9);
       
-      // Rotate planets
+      // obracam planety
       planet1.rotation.y = elapsedTime * 0.2;
       planet2.rotation.y = elapsedTime * 0.15;
       planet3.rotation.y = elapsedTime * 0.1;
       
-      // Orbit planets around the sun
+      // planety krążą wokół słońca
       const orbit1 = elapsedTime * 0.3;
       const orbit2 = elapsedTime * 0.2;
       const orbit3 = elapsedTime * 0.15;
       
-      // Orbit planets in different planes
+      // każda planeta ma swoją orbitę
       planet1.position.x = -1.5 * Math.cos(orbit1);
       planet1.position.z = -2 * Math.sin(orbit1);
       earthAtmosphere.position.copy(planet1.position);
@@ -218,7 +218,7 @@ const BackgroundEffects = () => {
       ring.rotation.x = Math.PI / 2.5;
       ring.rotation.z = elapsedTime * 0.1;
       
-      // Interactive rotation based on mouse position
+      // myszka porusza sceną lekko
       if (mouseX.current > 0) {
         const rotationSpeed = 0.00001;
         
@@ -230,16 +230,16 @@ const BackgroundEffects = () => {
         camera.lookAt(scene.position);
       }
       
-      // Render
+      // renderowanie
       renderer.render(scene, camera);
       
-      // Call animate recursively
+      // rekurencja animacji
       window.requestAnimationFrame(animate);
     };
     
     animate();
     
-    // Handle resize
+    // obsługa zmiany rozmiaru okna
     const handleResize = () => {
       const newWidth = window.innerWidth * 0.95;
       const newHeight = window.innerHeight * 0.95;
@@ -251,36 +251,45 @@ const BackgroundEffects = () => {
     
     window.addEventListener('resize', handleResize);
     
-    // Cleanup
     return () => {
       window.removeEventListener('resize', handleResize);
       document.removeEventListener('mousemove', handleMouseMove);
       
-      if (containerRef.current) {
-        containerRef.current.removeChild(renderer.domElement);
-      }
+      containerRef.current?.removeChild(renderer.domElement);
       
-      // Dispose all geometries and materials
-      [
-        sunGeometry, sunMaterial, sunGlowGeometry, sunGlowMaterial, 
-        outerGlowGeometry, outerGlowMaterial,
-        planet1Geometry, planet1Material, earthAtmosphereGeometry, earthAtmosphereMaterial,
-        planet2Geometry, planet2Material, planet3Geometry, planet3Material,
-        ringGeometry, ringMaterial
-      ].forEach(item => item && item.dispose && item.dispose());
-
-      // Remove all objects from memory
-      scene.clear();
+      // czyszczę pamięć
+      starField1.geometry.dispose();
+      starField2.geometry.dispose();
+      starField3.geometry.dispose();
+      sunGeometry.dispose();
+      sunGlowGeometry.dispose();
+      outerGlowGeometry.dispose();
+      planet1Geometry.dispose();
+      planet2Geometry.dispose();
+      planet3Geometry.dispose();
+      ringGeometry.dispose();
+      
+      // też materiały
+      (starField1.material as THREE.PointsMaterial).dispose();
+      (starField2.material as THREE.PointsMaterial).dispose();
+      (starField3.material as THREE.PointsMaterial).dispose();
+      sunMaterial.dispose();
+      sunGlowMaterial.dispose();
+      outerGlowMaterial.dispose();
+      planet1Material.dispose();
+      planet2Material.dispose();
+      planet3Material.dispose();
+      ringMaterial.dispose();
+      
+      // i tekstury
+      sunTexture.dispose();
+      planet1Texture.dispose();
+      planet2Texture.dispose();
+      planet3Texture.dispose();
     };
   }, []);
   
-  return (
-    <div 
-      ref={containerRef} 
-      className="fixed inset-0 flex items-center justify-center -z-10"
-      style={{ pointerEvents: 'none' }}
-    />
-  );
+  return <div ref={containerRef} style={{ width: '100%', height: '100%' }}></div>;
 };
 
 export default BackgroundEffects; 
