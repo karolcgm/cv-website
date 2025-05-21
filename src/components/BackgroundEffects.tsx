@@ -14,7 +14,7 @@ const BackgroundEffects = () => {
     
     // ustawiam renderer trochę mniejszy żeby wyglądało lepiej
     const width = window.innerWidth * 0.95;
-    const height = window.innerHeight * 0.95;
+    const height = window.innerHeight * 0.85; // zmniejszone o 10%
     
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // lepiej działa
@@ -242,7 +242,7 @@ const BackgroundEffects = () => {
     // obsługa zmiany rozmiaru okna
     const handleResize = () => {
       const newWidth = window.innerWidth * 0.95;
-      const newHeight = window.innerHeight * 0.95;
+      const newHeight = window.innerHeight * 0.85; // zmniejszone o 10%
       
       camera.aspect = newWidth / newHeight;
       camera.updateProjectionMatrix();
