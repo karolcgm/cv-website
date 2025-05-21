@@ -41,13 +41,22 @@ const App = () => {
         <div className="main-container">
           {/* Header */}
           <header className="header">
-            <motion.h1
+            <motion.div
+              className="text-center mb-4"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              PESZKO PIOTR
-            </motion.h1>
+              <h1 className="text-2xl font-bold mb-2" style={{ 
+                background: 'linear-gradient(135deg, var(--primary), var(--secondary), var(--accent))',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                color: 'transparent' 
+              }}>
+                PIOTR PESZKO
+              </h1>
+              <p className="text-sm opacity-80">20.01.1988 | Polska</p>
+            </motion.div>
             
             <motion.div 
               className="header-separator"
@@ -63,9 +72,9 @@ const App = () => {
               transition={{ duration: 0.7, delay: 0.5 }}
             >
               <a href="mailto:piotr.peszkoo@gmail.com" className="contact-item" style={{ width: '250px' }}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
-                  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                  <polyline points="22,6 12,13 2,6"></polyline>
                 </svg>
                 <span>piotr.peszkoo@gmail.com</span>
               </a>
@@ -89,8 +98,31 @@ const App = () => {
           {/* Główna zawartość */}
           <main>
             <div className="grid-layout">
+              {/* Edukacja (przeniesiona jako pierwsza kolumna) */}
+              <Card title="Edukacja" delay={0.1}>
+                <div className="space-y-5">
+                  <div>
+                    <div className="flex flex-wrap justify-between mb-2">
+                      <h3 className="job-title">Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie</h3>
+                      <span className="date-badge">1.10.2008 - 8.06.2013</span>
+                    </div>
+                    <p className="job-description">Kierunek "Geodezja i Kartografia"</p>
+                  </div>
+
+                  <div>
+                    <div className="flex flex-wrap justify-between mb-2">
+                      <h3 className="job-title">Politechnika Śląska Gliwice</h3>
+                      <span className="date-badge">10.2024 - obecnie</span>
+                    </div>
+                    <p className="job-description">Studia podyplomowe</p>
+                    <p className="job-description">Kierunek Inżynieria Aplikacji Mobilnych i Baz Danych</p>
+                    <p className="job-description">Planowane zakończenie: koniec 2025</p>
+                  </div>
+                </div>
+              </Card>
+
               <div className="grid-col-span-2">
-                <Card title="Doświadczenie zawodowe" delay={0.1}>
+                <Card title="Doświadczenie zawodowe" delay={0.2}>
                   <div className="space-y-6">
                     <div className="timeline-item">
                       <div className="flex flex-wrap justify-between mb-2">
@@ -136,43 +168,6 @@ const App = () => {
                   </div>
                 </Card>
               </div>
-
-              {/* Kolumny */}
-              <Card title="Edukacja" delay={0.2}>
-                <div className="text-center mb-4">
-                  <h2 className="text-2xl font-bold" style={{ 
-                    background: 'linear-gradient(135deg, var(--primary), var(--secondary), var(--accent))',
-                    WebkitBackgroundClip: 'text',
-                    backgroundClip: 'text',
-                    color: 'transparent' 
-                  }}>
-                    PIOTR PESZKO
-                  </h2>
-                  <div className="mt-2 mb-4 text-sm">
-                    <p>20.01.1988</p>
-                    <p>Polska</p>
-                  </div>
-                </div>
-                <div className="space-y-5">
-                  <div>
-                    <div className="flex flex-wrap justify-between mb-2">
-                      <h3 className="job-title">Akademia Górniczo-Hutnicza im. Stanisława Staszica w Krakowie</h3>
-                      <span className="date-badge">1.10.2008 - 8.06.2013</span>
-                    </div>
-                    <p className="job-description">Kierunek "Geodezja i Kartografia"</p>
-                  </div>
-
-                  <div>
-                    <div className="flex flex-wrap justify-between mb-2">
-                      <h3 className="job-title">Politechnika Śląska Gliwice</h3>
-                      <span className="date-badge">10.2024 - obecnie</span>
-                    </div>
-                    <p className="job-description">Studia podyplomowe</p>
-                    <p className="job-description">Kierunek Inżynieria Aplikacji Mobilnych i Baz Danych</p>
-                    <p className="job-description">Planowane zakończenie: koniec 2025</p>
-                  </div>
-                </div>
-              </Card>
 
               <Card title="Kursy i certyfikaty" delay={0.3}>
                 <div className="space-y-4">
