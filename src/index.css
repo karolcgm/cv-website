@@ -283,10 +283,9 @@ body {
   background: rgba(99, 102, 241, 0.1);
   margin: 0.25rem;
   text-align: left;
-  width: 300px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  min-width: 300px;
+  width: auto;
+  max-width: 350px;
 }
 
 .contact-info a:hover, 
