@@ -55,7 +55,7 @@ const BackgroundEffects = () => {
     
     // Create Sun with glowing effect
     const sunGeometry = new THREE.SphereGeometry(0.35, 32, 32);
-    const sunTexture = new THREE.TextureLoader().load('https://www.solarsystemscope.com/textures/download/2k_sun.jpg');
+    const sunTexture = new THREE.TextureLoader().load('/textures/2k_sun.jpg');
     const sunMaterial = new THREE.MeshBasicMaterial({
       map: sunTexture,
       transparent: true,
@@ -97,7 +97,7 @@ const BackgroundEffects = () => {
     // Create planets with textures
     // Earth-like planet
     const planet1Geometry = new THREE.SphereGeometry(0.15, 32, 32);
-    const planet1Texture = new THREE.TextureLoader().load('https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg');
+    const planet1Texture = new THREE.TextureLoader().load('/textures/2k_earth_daymap.jpg');
     const planet1Material = new THREE.MeshPhongMaterial({ 
       map: planet1Texture,
       shininess: 25
@@ -120,7 +120,7 @@ const BackgroundEffects = () => {
     
     // Mars-like planet
     const planet2Geometry = new THREE.SphereGeometry(0.18, 32, 32);
-    const planet2Texture = new THREE.TextureLoader().load('https://www.solarsystemscope.com/textures/download/2k_mars.jpg');
+    const planet2Texture = new THREE.TextureLoader().load('/textures/2k_mars.jpg');
     const planet2Material = new THREE.MeshPhongMaterial({ map: planet2Texture });
     const planet2 = new THREE.Mesh(planet2Geometry, planet2Material);
     planet2.position.set(2.2, -1.5, -3);
@@ -128,7 +128,7 @@ const BackgroundEffects = () => {
     
     // Gas giant planet
     const planet3Geometry = new THREE.SphereGeometry(0.25, 32, 32);
-    const planet3Texture = new THREE.TextureLoader().load('https://www.solarsystemscope.com/textures/download/2k_jupiter.jpg');
+    const planet3Texture = new THREE.TextureLoader().load('/textures/2k_jupiter.jpg');
     const planet3Material = new THREE.MeshPhongMaterial({ map: planet3Texture });
     const planet3 = new THREE.Mesh(planet3Geometry, planet3Material);
     planet3.position.set(-2.2, 1.5, -4);
